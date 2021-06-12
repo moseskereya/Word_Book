@@ -36,6 +36,7 @@ class Nav extends Component {
 
         const mydata = this.state.data;
 
+        // eslint-disable-next-line array-callback-return
         const groups = mydata.filter((value) => {
             if (this.state.filters === "") {
                 return (
