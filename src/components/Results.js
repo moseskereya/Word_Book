@@ -6,7 +6,7 @@ class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.WordsList.reverse(),
+            data: this.props.WordsList,
             filters: "",
             SortBy: true,
             Asc: "Ascending",
