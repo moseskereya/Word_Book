@@ -6,13 +6,26 @@ class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.WordsList,
-            filters: ""
+            data: this.props.WordsList.reverse(),
+            filters: "",
+            SortBy: true,
+            Asc: "Ascending",
+            Desc: "Descending"
         }
     }
 
     Search = (e) => {
         this.setState({filters: e.target.value })
+    }
+
+    SortBy = () => {
+        if (this.state.SortBy === false && this.state.Asc === "Ascending") {
+            this.setState({ data: this.props.WordsList})
+        } else if (this.state.SortBy === true && this.state.Desc === "Descending"){
+            this.setState({ data: this.props.WordsList.reverse()})
+        } else {
+            return null;
+        }
     }
 
     render() {
@@ -35,32 +48,27 @@ class Nav extends Component {
         }
 
         const mydata = this.state.data;
-
         // eslint-disable-next-line array-callback-return
         const groups = mydata.filter((value) => {
             if (this.state.filters === "") {
-                return (
-                    <div>
-                        <h4>Ooops!! There is nothing found, try another search</h4>
-                    </div>
-                );
+                return value;
             } else if(value.toLowerCase().includes(this.state.filters.toLowerCase())) {
-               return value;
+             return value;
         }
         }).map((value) => {
                 return(
-                    <section id={value}>
-                        <Link className="link_google"
-                            to={{
-                                pathname: `/google/${value}`,
-                                state: { word: value }
-                            }}>
-                            <div className="word_content">
-                                <p>{value}</p>
-                            </div>
-                        </Link>
-                    </section>
-                )
+                <section id={value}>
+                    <Link className="link_google"
+                    to={{
+                        pathname: `/google/${value}`,
+                        state: { word: value }
+                        }}>
+                        <div className="word_content">
+                            <p>{value}</p>
+                        </div>
+                    </Link>
+                 </section>
+            )
         })
 
         const group1 = groups.slice(0, 200);
@@ -149,8 +157,15 @@ class Nav extends Component {
              return (
                   <>
                     <div className="search_bar">   
-                         <input type="text" placeholder="Search Your favourite word" onChange={this.Search} />
-                         <h4>Search</h4>
+                         <input type="text" placeholder="Search Your Word" onChange={this.Search} />
+
+                         <input onChange={this.SortBy}
+                            type="text" 
+                            list="sortby" name="sortby" placeholder="SortBy" />
+                         <datalist id="sortby">
+                             <option value="Ascending" />
+                             <option value="Descending" />
+                         </datalist>
                     </div>
                      <Carousel responsive={responsive}>
                          <div>

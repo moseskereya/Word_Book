@@ -37,7 +37,6 @@ class Word extends Component {
          });
     }
 
- 
     render() {
         const { StartsWith, EndsWith, Include, WordMaxLength, WordMinLength,
          isadata } = this.state;
@@ -77,7 +76,8 @@ class Word extends Component {
                                     <option value="16" />
                                     <option value="17" />
                                 </datalist>
-                                <input onChange={this.InputValueChnage} value={WordMinLength} type="number" min="1" max="5"
+                                <input onChange={this.InputValueChnage} value={WordMinLength}
+                                    type="number" min="1" max="5"
                                     list="number_minimum" name="WordMinLength" placeholder="WordMinLength" />
                                 <datalist id="number_minimum">
                                     <option value="1" />
@@ -90,7 +90,7 @@ class Word extends Component {
                             </form>
                         </section>
                         <section className="wordsection">
-                            <div data-aos="fade-up" className="light-content">
+                            <div data-aos="zoom-out" className="light-content">
                                 <h3>WELCOME TO WORDFINDER APP</h3>
                                 <div className="mid-container">
                                     <p>With this app, you can learn as Many English Words as you can.</p>
@@ -104,9 +104,7 @@ class Word extends Component {
         } else {
             return (
                 <div>
-                    <Result WordsList={this.state.WordsList} WordMaxLength={this.state.WordMaxLength}
-                        InputValueChnage={this.InputValueChnage}
-                        GetWords={this.GetWords}/>
+                    <Result WordsList={this.state.WordsList}/>
                 </div>
             )
         }
