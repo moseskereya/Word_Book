@@ -435,9 +435,6 @@ transition: .5s ease-in-out;
 }
 .search_bar input{
     padding: .5rem 1rem;
-    border-top: none;
-    border-right: none;
-    border-left: none;
 }
 .search_bar h4{
     color: #1b1b1b7c;
@@ -533,6 +530,7 @@ transition: .5s ease-in-out;
     margin: 1.5rem 0;
 }
 
+
 @media screen and (max-width:1029px){
  .wordsection h3{
     margin-top: 4rem;
@@ -589,8 +587,14 @@ transition: .5s ease-in-out;
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .search_bar{
-    flex-direction:column;
+    .search_bar{
+      flex-direction: column;
+  }
+
+
+  .search_bar input{
+    margin: 1rem 0;
+    width: 70%;
   }
 
  .wordsection{
@@ -678,6 +682,11 @@ transition: .5s ease-in-out;
     justify-content:center;
     align-items:center;
   }
+    .search_bar input{
+      margin: 2rem 0;
+      width: 50%;
+  }
+
 
 }
 
@@ -689,5 +698,8 @@ transition: .5s ease-in-out;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+  }
+  .search_bar input{
+      margin: 2rem 0;
   }
 }
