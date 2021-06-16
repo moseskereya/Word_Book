@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom"
-class Nav extends Component {
+class Result extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,14 +15,15 @@ class Nav extends Component {
     }
 
     Search = (e) => {
-        this.setState({filters: e.target.value })
+        this.setState({ filters: e.target.value })
     }
 
     SortBy = () => {
         if (this.state.SortBy === false && this.state.Asc === "Ascending") {
-            this.setState({ data: this.props.WordsList.sort()})
-        } else if (this.state.SortBy === true && this.state.Desc === "Descending"){
-            this.setState({ data: this.props.WordsList.reverse()})
+            this.setState({
+                data: this.props.WordsList.sort((a, b) => a -b )})
+        } else if (this.state.SortBy === true && this.state.Desc === "Descending") {
+            this.setState({ data: this.props.WordsList.reverse((a, b) => b - a) })
         } else {
             return this.props.WordsList;
         }
@@ -52,22 +53,22 @@ class Nav extends Component {
         const groups = mydata.filter((value) => {
             if (this.state.filters === "") {
                 return value;
-            } else if(value.toLowerCase().includes(this.state.filters.toLowerCase())) {
-             return value;
-        }
+            } else if (value.toLowerCase().includes(this.state.filters.toLowerCase())) {
+                return value;
+            }
         }).map((value) => {
-                return(
+            return (
                 <section id={value}>
                     <Link className="link_google"
-                    to={{
-                        pathname: `/google/${value}`,
-                        state: { word: value }
+                        to={{
+                            pathname: `/google/${value}`,
+                            state: { word: value }
                         }}>
                         <div className="word_content">
                             <p>{value}</p>
                         </div>
                     </Link>
-                 </section>
+                </section>
             )
         })
 
@@ -171,326 +172,323 @@ class Nav extends Component {
         const group98 = groups.slice(19600, 19800);
         const group99 = groups.slice(19800, 20000);
         const group100 = groups.slice(20000, 20200);
-             return (
-                  <>
-                    <div className="search_bar">   
-                         <input className="search_bar_1" type="text" placeholder="Search Your Word" onChange={this.Search} />
-                         <input onChange={this.SortBy}
-                            type="text" 
-                            list="sortby" name="sortby" placeholder="SortBy" />
-                         <datalist id="sortby">
-                             <option value="Ascending" />
-                             <option value="Descending" />
-                         </datalist>
-                     </div>
-                     <div className="main_result">
-                         <Carousel responsive={responsive}>
-                             <div>
-                                 {group1}
-                             </div>
-                             <div>
-                                 {group2}
-                             </div>
-                             <div>
-                                 {group3}
-                             </div>
-                             <div>
-                                 {group4}
-                             </div>
-                             <div>
-                                 {group5}
-                             </div>
-                             <div>
-                                 {group6}
-                             </div>
-                             <div>
-                                 {group7}
-                             </div>
-                             <div>
-                                 {group8}
-                             </div>
-                             <div>
-                                 {group9}
-                             </div>
-                             <div>
-                                 {group10}
-                             </div>
-                             <div>
-                                 {group11}
-                             </div>
-                             <div>
-                                 {group12}
-                             </div>
-                             <div>
-                                 {group13}
-                             </div>
-                             <div>
-                                 {group14}
-                             </div>
-                             <div>
-                                 {group15}
-                             </div>
-                             <div>
-                                 {group16}
-                             </div>
-                             <div>
-                                 {group17}
-                             </div>
-                             <div>
-                                 {group18}
-                             </div>
-                             <div>
-                                 {group19}
-                             </div>
-                             <div>
-                                 {group20}
-                             </div>
-                             <div>
-                                 {group21}
-                             </div>
-                             <div>
-                                 {group22}
-                             </div>
-                             <div>
-                                 {group23}
-                             </div>
-                             <div>
-                                 {group24}
-                             </div>
-                             <div>
-                                 {group25}
-                             </div>
-                             <div>
-                                 {group26}
-                             </div>
-                             <div>
-                                 {group27}
-                             </div>
-                             <div>
-                                 {group28}
-                             </div>
-                             <div>
-                                 {group29}
-                             </div>
-                             <div>
-                                 {group30}
-                             </div>
-                             <div>
-                                 {group31}
-                             </div>
-                             <div>
-                                 {group32}
-                             </div>
-                             <div>
-                                 {group33}
-                             </div>
-                             <div>
-                                 {group34}
-                             </div>
-                             <div>
-                                 {group35}
-                             </div>
-                             <div>
-                                 {group36}
-                             </div>
-                             <div>
-                                 {group37}
-                             </div>
-                             <div>
-                                 {group38}
-                             </div>
-                             <div>
-                                 {group39}
-                             </div>
-                             <div>
-                                 {group40}
-                             </div>
-                             <div>
-                                 {group41}
-                             </div>
-                             <div>
-                                 {group42}
-                             </div>
-                             <div>
-                                 {group43}
-                             </div>
-                             <div>
-                                 {group44}
-                             </div>
-                             <div>
-                                 {group45}
-                             </div>
-                             <div>
-                                 {group46}
-                             </div>
-                             <div>
-                                 {group47}
-                             </div>
-                             <div>
-                                 {group48}
-                             </div>
-                             <div>
-                                 {group49}
-                             </div>
-                             <div>
-                                 {group50}
-                             </div>
-                             <div>
-                                 {group51}
-                             </div>
-                             <div>
-                                 {group52}
-                             </div>
-                             <div>
-                                 {group53}
-                             </div>
-                             <div>
-                                 {group54}
-                             </div>
-                             <div>
-                                 {group55}
-                             </div>
-                             <div>
-                                 {group56}
-                             </div>
-                             <div>
-                                 {group57}
-                             </div>
-                             <div>
-                                 {group58}
-                             </div>
-                             <div>
-                                 {group59}
-                             </div>
-                             <div>
-                                 {group60}
-                             </div>
-                             <div>
-                                 {group61}
-                             </div>
-                             <div>
-                                 {group62}
-                             </div>
-                             <div>
-                                 {group63}
-                             </div>
-                             <div>
-                                 {group64}
-                             </div>
-                             <div>
-                                 {group65}
-                             </div>
-                             <div>
-                                 {group66}
-                             </div>
-                             <div>
-                                 {group67}
-                             </div>
-                             <div>
-                                 {group68}
-                             </div>
-                             <div>
-                                 {group69}
-                             </div>
-                             <div>
-                                 {group70}
-                             </div>
-                             <div>
-                                 {group71}
-                             </div>
-                             <div>
-                                 {group72}
-                             </div>
-                             <div>
-                                 {group73}
-                             </div>
-                             <div>
-                                 {group74}
-                             </div>
-                             <div>
-                                 {group75}
-                             </div>
-                             <div>
-                                 {group76}
-                             </div>
-                             <div>
-                                 {group77}
-                             </div>
-                             <div>
-                                 {group78}
-                             </div>
-                             <div>
-                                 {group79}
-                             </div>
-                             <div>
-                                 {group80}
-                             </div>
-                             <div>
-                                 {group81}
-                             </div>
-                             <div>
-                                 {group82}
-                             </div>
-                             <div>
-                                 {group83}
-                             </div>
-                             {/*  */}
-                             <div>
-                                 {group84}
-                             </div>
-                             <div>
-                                 {group85}
-                             </div>
-                             <div>
-                                 {group86}
-                             </div>
-                             <div>
-                                 {group87}
-                             </div>
-                             <div>
-                                 {group88}
-                             </div>
-                             <div>
-                                 {group89}
-                             </div>
-                             <div>
-                                 {group90}
-                             </div>
-                             <div>
-                                 {group91}
-                             </div>
-                             <div>
-                                 {group92}
-                             </div>
-                             <div>
-                                 {group93}
-                             </div>
-                             <div>
-                                 {group94}
-                             </div>
-                             <div>
-                                 {group95}
-                             </div>
-                             <div>
-                                 {group96}
-                             </div>
-                             <div>
-                                 {group97}
-                             </div>
-                             <div>
-                                 {group98}
-                             </div>
-                             <div>
-                                 {group99}
-                             </div>
-                             <div>
-                                 {group100}
-                             </div>
-                         </Carousel>
-                     </div>
-                  </>
-                );
-        }
+        return (
+            <>
+                <div className="search_bar">
+                    <input className="search_bar_1" type="text" placeholder="Search Your Word" onChange={this.Search} />
+                    <select name="sortby" onChange={this.SortBy}>
+                        <option value={this.state.Asc}>Ascending</option>
+                        <option value={this.state.Desc}>Descending</option>
+                    </select>
+                </div>
+                <div className="main_result">
+                    <Carousel responsive={responsive}>
+                        <div>
+                            {group1}
+                        </div>
+                        <div>
+                            {group2}
+                        </div>
+                        <div>
+                            {group3}
+                        </div>
+                        <div>
+                            {group4}
+                        </div>
+                        <div>
+                            {group5}
+                        </div>
+                        <div>
+                            {group6}
+                        </div>
+                        <div>
+                            {group7}
+                        </div>
+                        <div>
+                            {group8}
+                        </div>
+                        <div>
+                            {group9}
+                        </div>
+                        <div>
+                            {group10}
+                        </div>
+                        <div>
+                            {group11}
+                        </div>
+                        <div>
+                            {group12}
+                        </div>
+                        <div>
+                            {group13}
+                        </div>
+                        <div>
+                            {group14}
+                        </div>
+                        <div>
+                            {group15}
+                        </div>
+                        <div>
+                            {group16}
+                        </div>
+                        <div>
+                            {group17}
+                        </div>
+                        <div>
+                            {group18}
+                        </div>
+                        <div>
+                            {group19}
+                        </div>
+                        <div>
+                            {group20}
+                        </div>
+                        <div>
+                            {group21}
+                        </div>
+                        <div>
+                            {group22}
+                        </div>
+                        <div>
+                            {group23}
+                        </div>
+                        <div>
+                            {group24}
+                        </div>
+                        <div>
+                            {group25}
+                        </div>
+                        <div>
+                            {group26}
+                        </div>
+                        <div>
+                            {group27}
+                        </div>
+                        <div>
+                            {group28}
+                        </div>
+                        <div>
+                            {group29}
+                        </div>
+                        <div>
+                            {group30}
+                        </div>
+                        <div>
+                            {group31}
+                        </div>
+                        <div>
+                            {group32}
+                        </div>
+                        <div>
+                            {group33}
+                        </div>
+                        <div>
+                            {group34}
+                        </div>
+                        <div>
+                            {group35}
+                        </div>
+                        <div>
+                            {group36}
+                        </div>
+                        <div>
+                            {group37}
+                        </div>
+                        <div>
+                            {group38}
+                        </div>
+                        <div>
+                            {group39}
+                        </div>
+                        <div>
+                            {group40}
+                        </div>
+                        <div>
+                            {group41}
+                        </div>
+                        <div>
+                            {group42}
+                        </div>
+                        <div>
+                            {group43}
+                        </div>
+                        <div>
+                            {group44}
+                        </div>
+                        <div>
+                            {group45}
+                        </div>
+                        <div>
+                            {group46}
+                        </div>
+                        <div>
+                            {group47}
+                        </div>
+                        <div>
+                            {group48}
+                        </div>
+                        <div>
+                            {group49}
+                        </div>
+                        <div>
+                            {group50}
+                        </div>
+                        <div>
+                            {group51}
+                        </div>
+                        <div>
+                            {group52}
+                        </div>
+                        <div>
+                            {group53}
+                        </div>
+                        <div>
+                            {group54}
+                        </div>
+                        <div>
+                            {group55}
+                        </div>
+                        <div>
+                            {group56}
+                        </div>
+                        <div>
+                            {group57}
+                        </div>
+                        <div>
+                            {group58}
+                        </div>
+                        <div>
+                            {group59}
+                        </div>
+                        <div>
+                            {group60}
+                        </div>
+                        <div>
+                            {group61}
+                        </div>
+                        <div>
+                            {group62}
+                        </div>
+                        <div>
+                            {group63}
+                        </div>
+                        <div>
+                            {group64}
+                        </div>
+                        <div>
+                            {group65}
+                        </div>
+                        <div>
+                            {group66}
+                        </div>
+                        <div>
+                            {group67}
+                        </div>
+                        <div>
+                            {group68}
+                        </div>
+                        <div>
+                            {group69}
+                        </div>
+                        <div>
+                            {group70}
+                        </div>
+                        <div>
+                            {group71}
+                        </div>
+                        <div>
+                            {group72}
+                        </div>
+                        <div>
+                            {group73}
+                        </div>
+                        <div>
+                            {group74}
+                        </div>
+                        <div>
+                            {group75}
+                        </div>
+                        <div>
+                            {group76}
+                        </div>
+                        <div>
+                            {group77}
+                        </div>
+                        <div>
+                            {group78}
+                        </div>
+                        <div>
+                            {group79}
+                        </div>
+                        <div>
+                            {group80}
+                        </div>
+                        <div>
+                            {group81}
+                        </div>
+                        <div>
+                            {group82}
+                        </div>
+                        <div>
+                            {group83}
+                        </div>
+                        {/*  */}
+                        <div>
+                            {group84}
+                        </div>
+                        <div>
+                            {group85}
+                        </div>
+                        <div>
+                            {group86}
+                        </div>
+                        <div>
+                            {group87}
+                        </div>
+                        <div>
+                            {group88}
+                        </div>
+                        <div>
+                            {group89}
+                        </div>
+                        <div>
+                            {group90}
+                        </div>
+                        <div>
+                            {group91}
+                        </div>
+                        <div>
+                            {group92}
+                        </div>
+                        <div>
+                            {group93}
+                        </div>
+                        <div>
+                            {group94}
+                        </div>
+                        <div>
+                            {group95}
+                        </div>
+                        <div>
+                            {group96}
+                        </div>
+                        <div>
+                            {group97}
+                        </div>
+                        <div>
+                            {group98}
+                        </div>
+                        <div>
+                            {group99}
+                        </div>
+                        <div>
+                            {group100}
+                        </div>
+                    </Carousel>
+                </div>
+            </>
+        );
+    }
 }
 
-export default Nav;
+export default Result;

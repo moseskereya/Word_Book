@@ -65,5 +65,3 @@ class Google extends Component {
        
 export default Google;
 
-
-// https://www.google.com/search?q=COMETS&rlz=1C1FGUR_enTZ950TZ950&sxsrf=ALeKk00eAaEIDlKQgxmbvS9x432ZpsR_-A:1623414187052&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjUzMSPyY_xAhUEQEEAHWU8DGkQ_AUoAXoECAEQAw&biw=1920&bih=975

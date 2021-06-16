@@ -90,7 +90,7 @@ class Word extends Component {
                             </form>
                         </section>
                         <section className="wordsection">
-                            <div data-aos="zoom-out" className="light-content">
+                            <div className="light-content">
                                 <h3>WELCOME TO WORDFINDER APP</h3>
                                 <div className="mid-container">
                                     <p>With this app, you can learn as Many English Words as you can.</p>
