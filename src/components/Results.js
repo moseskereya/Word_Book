@@ -20,7 +20,7 @@ class Nav extends Component {
 
     SortBy = () => {
         if (this.state.SortBy === false && this.state.Asc === "Ascending") {
-            this.setState({ data: this.props.WordsList})
+            this.setState({ data: this.props.WordsList.sort()})
         } else if (this.state.SortBy === true && this.state.Desc === "Descending"){
             this.setState({ data: this.props.WordsList.reverse()})
         } else {
@@ -174,8 +174,7 @@ class Nav extends Component {
              return (
                   <>
                     <div className="search_bar">   
-                         <input type="text" placeholder="Search Your Word" onChange={this.Search} />
-
+                         <input className="search_bar_1" type="text" placeholder="Search Your Word" onChange={this.Search} />
                          <input onChange={this.SortBy}
                             type="text" 
                             list="sortby" name="sortby" placeholder="SortBy" />
