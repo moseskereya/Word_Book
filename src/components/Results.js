@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom"
+import axios from 'axios';
 class Result extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.WordsList,
             filters: "",
             SortBy: true,
             Asc: "Ascending",
-            Desc: "Descending"
+            Desc: "Descending",
+            StartsWith: "",
+            EndsWith: "",
+            Include: "",
+            WordMaxLength: 15,
+            WordMinLength: 2,
+            WordsList: [],
+            isadata: false
         }
     }
 
@@ -21,12 +28,32 @@ class Result extends Component {
     SortBy = () => {
         if (this.state.SortBy === false && this.state.Asc === "Ascending") {
             this.setState({
-                data: this.props.WordsList.sort((a, b) => a -b )})
+                data: this.state.WordsList.sort((a, b) => a - b)
+            })
         } else if (this.state.SortBy === true && this.state.Desc === "Descending") {
-            this.setState({ data: this.props.WordsList.reverse((a, b) => b - a) })
+            this.setState({ data: this.state.WordsList.reverse((a, b) => b - a) })
         } else {
-            return this.props.WordsList;
+            return this.state.WordsList;
         }
+    }
+
+    InputValueChnage = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    GetWords = (e) => {
+        e.preventDefault();
+        const code = "8IZqWCIZi3kVDCXhQnmyvh0EKHvaQsVWN5kJjLnqR4ss4og5HzTL3Q=="
+        axios.post(`https://wordfind.azurewebsites.net/api/English?code=${code}`, this.state)
+            .then(response => {
+                const data = response.data;
+                this.setState({
+                    WordsList: data
+                })
+            })
+            .then(error => {
+                console.log(error)
+            });
     }
 
     render() {
@@ -48,7 +75,8 @@ class Result extends Component {
             }
         }
 
-        const mydata = this.state.data;
+
+        const mydata = this.state.WordsList;
         // eslint-disable-next-line array-callback-return
         const groups = mydata.filter((value) => {
             if (this.state.filters === "") {
@@ -72,6 +100,7 @@ class Result extends Component {
             )
         })
 
+        const { StartsWith, EndsWith, Include, WordMaxLength, WordMinLength } = this.state;
         const group1 = groups.slice(0, 200);
         const group2 = groups.slice(200, 400);
         const group3 = groups.slice(400, 600);
@@ -174,13 +203,62 @@ class Result extends Component {
         const group100 = groups.slice(20000, 20200);
         return (
             <>
-                <div className="search_bar">
+                <div>
+                    <form className="form_data"
+                        onSubmit={this.GetWords}>
+                        <section>
+                            <input onChange={this.InputValueChnage} value={StartsWith} type="text" name="StartsWith" placeholder="StartsWith" />
+
+                            <input onChange={this.InputValueChnage} value={Include} type="text" name="Include" placeholder="Include" />
+
+                            <input onChange={this.InputValueChnage} value={EndsWith} type="text" name="EndsWith" placeholder="EndsWith" />
+                        </section>
+                     <section>
+                            <input onChange={this.InputValueChnage}
+                                value={WordMaxLength} list="number_maxmun" name="WordMaxLength" placeholder="WordMaxLength"
+                                type="number"
+                                id="select"
+                                max="17" min="2" />
+                            <datalist id="number_maxmun">
+                                <option value="2" />
+                                <option value="3" />
+                                <option value="4" />
+                                <option value="5" />
+                                <option value="6" />
+                                <option value="7" />
+                                <option value="8" />
+                                <option value="8" />
+                                <option value="9" />
+                                <option value="10" />
+                                <option value="11" />
+                                <option value="12" />
+                                <option value="13" />
+                                <option value="14" />
+                                <option value="15" />
+                                <option value="16" />
+                                <option value="17" />
+                            </datalist>
+                            <input onChange={this.InputValueChnage} value={WordMinLength}
+                                type="number" min="1" max="5"
+                                list="number_minimum" name="WordMinLength" placeholder="WordMinLength" />
+                            <datalist id="number_minimum">
+                                <option value="1" />
+                                <option value="2" />
+                                <option value="3" />
+                                <option value="4" />
+                                <option value="5" />
+                            </datalist><br />
+                            <button className="btn_search" type="submit">{this.state.WordsList.length === 0 ? <span>Search </span> : <span>Search Results</span>}</button>
+                     </section>
+                    </form>
+                </div>
+                {this.state.WordsList.length === 0 ? <div></div>: <div className="search_bar">
                     <input className="search_bar_1" type="text" placeholder="Search Your Word" onChange={this.Search} />
                     <select name="sortby" onChange={this.SortBy}>
                         <option value={this.state.Asc}>Ascending</option>
                         <option value={this.state.Desc}>Descending</option>
                     </select>
-                </div>
+                </div>}
                 <div className="main_result">
                     <Carousel responsive={responsive}>
                         <div>

@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro:400,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,600;0,700;1,400&display=swap');
+
 .App{
     text-align: center;
 }
 :root{
-   --color:#1b1b1b9d;
-   --bcg:rgb(196, 161, 138);
+   --color:#0a0a0aec;
+   --bcg:rgb(233, 85, 17);
 }
+
 body {
     overflow-x: hidden;
     font-family: 'IBM Plex Sans', sans-serif;
-    transition: .8s ease-in-out;
+    background-color: #f2f2f2;
 }
 
 .container{
@@ -25,8 +29,9 @@ body {
     color: whitesmoke;
     transition: .8s ease-in-out;
 }
+
 .gray-theme{
-    background-color: #a9a8ac;
+   background-color: #f2f2f2;
     color: whitesmoke;
     transition: .8s ease-in-out;
 }
@@ -37,7 +42,6 @@ nav{
     width: 35%;
     justify-content: space-around;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
     box-shadow: 10px 10px 45px 0px rgb(255, 255, 255);
     -webkit-box-shadow: 10px 10px 45px 0px rgb(255, 255, 255);
     -moz-box-shadow: 10px 10px 45px 0px rgba(255, 255, 255, 0.75);
@@ -59,7 +63,7 @@ nav ul{
 nav ul li{
     color: rgb(27, 27, 27);
     margin: 1rem 0;
-    padding: 8px 16px;
+    padding: 2px;
     transition: .5s ease-in-out;
 }
 .btn{
@@ -177,6 +181,7 @@ p {
      background-color:var(--bcg);
      box-shadow: 0 4px 8px  rgba(0, 0, 0, 0.11);
      padding: 20px;
+     color: rgb(207, 204, 204);
  }
 
   .container_themes{
@@ -204,7 +209,9 @@ p {
      margin: 6rem 0;
      padding: 0 20px;
  }
- 
+ .mid_container{
+     padding: 20px;
+ }
 
  /* //about page styles end */
 
@@ -224,7 +231,8 @@ p {
 .formsection{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 80vh;
+    width: 50%;
     align-items: center;
     justify-content: space-around;
 }
@@ -235,16 +243,20 @@ p {
     justify-content: space-around;
 }
 
-.form_data input{
-    margin: .8rem;
-    color: #1b1b1b7c;
-    border-color: #1b1b1b7c;
-    padding: .8rem 1.2rem;
-    border-radius: 10px;
-    width: 60%;
-    transition: .8s ease-in-out;
+.form_data {
+ height: 14vh;
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ margin: 20px auto;
 }
 
+.form_data input{
+    margin: .3rem;
+    color: #1b1b1b7c;
+    padding: .6rem 1.2rem;
+    width: 50%;
+    transition: .8s ease-in-out;
+}
 .search_bar_1{
 padding: .5rem 1rem;
 position: relative;
@@ -257,11 +269,11 @@ padding: 10px 0;
 
 .form_data input{
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .form_data input:focus{
-    outline: none;
+    outline: 1px solid rgb(233, 85, 17);
 }
 .search{
     background-image: url('https://img.icons8.com/ios/32/000000/search--v1.png');
@@ -278,8 +290,8 @@ padding: 10px 0;
 }
 
 .btn_search{
-    padding: .8rem 1.6rem;
-    margin: 2rem 0;
+    padding: .5rem 4rem;
+    margin: .4rem 0;
     background-color: var(--bcg);
     text-decoration: none;
     border: none;
@@ -297,7 +309,7 @@ padding: 10px 0;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 50%;
     background-image: url('./components/images/library.jpg');
     background-position: center;
     background-size: cover;
@@ -324,15 +336,7 @@ padding: 10px 0;
  animation: myanimation;
 }
 
-@keyframes myanimation{
-from{
- 
-}
 
-top{
-
- }
-}
 
 .users_profiles_img{
     width: 200px;
@@ -445,12 +449,13 @@ transition: .5s ease-in-out;
 }
 
 .word_nav ul li{
-    margin: 0 .8rem;
+    margin: 0 .2rem;
     text-decoration: none;
-    color: #1b1b1b7c;
-    font-size: 13px;
+    color: #1b1b1bec;
+    font-size: 14px;
     text-transform: uppercase;
 }
+
 .how{
     margin: 3rem;
     text-align: left;
@@ -613,6 +618,7 @@ transition: .5s ease-in-out;
     height: 100px;
     max-width: 100%;
   }
+
 }
 
 @media screen and (max-width:768px){
@@ -634,6 +640,9 @@ transition: .5s ease-in-out;
       margin: 20px auto;
   }
 
+  .form_data{
+      grid-template-columns: repeat(1, 1fr);
+  }
 
   .search_bar input{
     margin: 1rem 0;

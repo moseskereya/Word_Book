@@ -28,14 +28,12 @@ class Nav extends Component {
                     <Link to="/" className="links">
                         <li>Home</li>
                     </Link>
+                    <Link to="/WordSearch" className="links">
+                        <li>WordSearch</li>
+                    </Link>
                     <Link to="/About" className="links">
                         <li>About</li>
                     </Link>
-                    <li className="link">
-                        <span>
-                            <i className="fa fa-moon" onClick={this.changeTheme}></i>
-                        </span>
-                    </li>
                 </ul>
             </div>
          );
